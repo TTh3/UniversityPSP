@@ -52,3 +52,7 @@ circleArea(5)
 # print("I'm having fun and can't wait to learn more!")
 # print('I'm having fun and can't wait to learn more!')
 
+print("I'm having fun and can't wait to learn more!")
+print("I'm having fun and can't wait to learn more!")
+print("I'm having fun and can't wait to learn more!") 
+
