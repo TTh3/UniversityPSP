@@ -1,10 +1,10 @@
-'''
+"""
 
 Things to ask:
 What would happen if user got 4 or 5 number of values equal?
 What if there are 3 of a kind and the other 2 have the same value (pair?)
 
-'''
+"""
 
 #
 # File: siljd001_battle_p1.py
@@ -15,7 +15,7 @@ What if there are 3 of a kind and the other 2 have the same value (pair?)
 #
 
 import random
-import dice # Import dice module to display the die face values to the screen
+import dice  # Import dice module to display the die face values to the screen
 
 # Player and Dragon's Health
 player_health = 100
@@ -27,68 +27,55 @@ all_dice = []  # List of value of six-sided dices
 dice_counter = {}
 num_of_dices = 5  # No. of six-sided dice
 for damage_count in range(num_of_dices):
-    damage_value =random.randint(1, 6)
+    damage_value = random.randint(1, 6)
     total_damage += damage_value
     all_dice.append(damage_value)
     if damage_value in dice_counter:
-        dice_counter[damage_value] +=1
+        dice_counter[damage_value] += 1
     else:
         dice_counter[damage_value] = 1
 
-# Manipulate all_dice to debug results
-all_dice = [3,3,3,4,1]
 
-current_damage = 0 # Current Damage for each round
+# Manipulate Dices to debug errors
+all_dice = [1, 1, 1, 4, 3]
+dice_counter = {1: 3, 3: 1, 4: 1}
+
+print(dice_counter)
+
+current_damage = 0  # Current Damage for each round
 
 # Standard Roll (All different values)
-if total_damage == 21: # if each dice values 1-6 are unique, total die must be equal to (1+2+3+4+5+6) = 21
+if total_damage == 21:
+    # if each dice values 1-6 are unique, total die must be equal to (1+2+3+4+5+6) = 21
     current_damage = 17
 
-# Pair (hit) Roll (2 dice have the same value)
-# non_pair_values = set(all_dice) 
-non_duplicated = set(all_dice)
-# The List stores non pair values, later it acts like a Set but keeps it's storing functionality as a List
-dice_counter = {}
-pair_count = 0
-# Stores every pair
+# Three of a kind Roll
+if 3 in dice_counter.values():
+    dice_counter_key = list(dice_counter.keys())[
+        list(dice_counter.values()).index(3)
+    ]  # Grabs the key that has a value of 3
+    if dice_counter_key in [
+        1,
+        3,
+        5,
+    ]:
+        # Roll: Three of a kind (swing and miss) => Three dice have the same face value and the other two have different values. If three of a kind is 1, 3 or 5, then no damage inflicted.
+        current_damage = 0
 
-# TODO: have a counter for each number inside a dictionary
-for each_dice in all_dice:
-    if each_dice in dice_counter:
-        dice_counter[each_dice] +=1
+    elif len(dice_counter) == 2:
+        # TODO: What if a pair and 3 same dice values are pressent?
+        current_damage = total_damage
+    elif len(dice_counter) == 3:
+        # Roll: Three of a kind (critical hit) => Three dice have the same face value and the other two have different values. Triple the damage dealt.
+        current_damage = 54
     else:
-        dice_counter[each_dice] = 1
-    # print('debig',each_dice in non_duplicated)
-    # if each_dice in pair_values:
-    #     pair_count+=1
-    #     pair_values.add(each_dice)
-    # else:
-    #     non_pair_values=list(set(non_pair_values))
-    #     non_pair_values.append(all_dice[each_dice])
-print(non_duplicated, dice_counter,pair_count)
-for keys in dice_counter.keys():
-    if dice_counter.get(keys) == 3:
-        
-# if len(non_duplicated)>=3: # Makes sure that there are 3 non pair values
-#     if pair_count==2:
-#         # [3,3,3,4,4]
-#         current_damage = 54
-#     elif pair_count==1:
-#         # Checks if there is only one pair
-#         current_damage=38
+        # Wont be reached due to only 5 six-dices are used
+        current_damage = total_damage
 
-# # Three of a kind (swing and miss)
-# if len(non_duplicated) == 2: # If there are dice counts of 3 to 2 same values or 4 to 1 same values
-#     if pair_count==2: # TODO: What if there are 3 of a kind and the other 2 have the same value (pair?)
-#         current_damage = 0
-#     elif pair_count==1:
-#         current_damage=54
-        
-    
-        
-    
+# Pair (hit)
+# TODO: Work On Pair Rolls
 
-
+# Displaying dice values
 dice.display_dice(all_dice)
 
 print("The current damage is", current_damage)
