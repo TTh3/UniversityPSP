@@ -37,9 +37,9 @@ for damage_count in range(num_of_dices):
 
 
 # Manipulate Dices to debug errors
-all_dice = [1, 1, 1, 4, 3]
-dice_counter = {1: 3, 3: 1, 4: 1}
-
+all_dice = [4, 4, 4, 4, 4]
+dice_counter = {4: 5}
+total_damage = sum(all_dice)
 print(dice_counter)
 
 current_damage = 0  # Current Damage for each round
@@ -61,7 +61,6 @@ if 3 in dice_counter.values():
     ]:
         # Roll: Three of a kind (swing and miss) => Three dice have the same face value and the other two have different values. If three of a kind is 1, 3 or 5, then no damage inflicted.
         current_damage = 0
-
     elif len(dice_counter) == 2:
         # TODO: What if a pair and 3 same dice values are pressent?
         current_damage = total_damage
@@ -74,6 +73,15 @@ if 3 in dice_counter.values():
 
 # Pair (hit)
 # TODO: Work On Pair Rolls
+if 2 in dice_counter.values():
+    if len(dice_counter) == 4:
+        current_damage = 38
+    else:
+        current_damage = total_damage
+
+# 4 or Full similar dice
+if 4 in dice_counter.values() or 5 in dice_counter.values():
+    current_damage = total_damage
 
 # Displaying dice values
 dice.display_dice(all_dice)
