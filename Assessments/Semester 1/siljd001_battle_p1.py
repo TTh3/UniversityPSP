@@ -2,7 +2,7 @@
 # File: siljd001_battle_p1.py
 # Author: Jaylord Silverio
 # Email Id: siljd001@mymail.unisa.edu.au
-# Description: Game of Dragon Battleground
+# Description: Game of Dragon Battleground - Part 1
 # This is my own work as defined by the University's Academic Misconduct policy.
 #
 
@@ -85,7 +85,7 @@ while play_dragon_battleground == "y":
                 damage_value = random.randint(1, 6)
                 total_damage += damage_value
                 player_roll.append(damage_value)
-                dice_count[damage_value - 1] += 1
+                dice_count[damage_value - 1] += 1 # Adds 1 to the index matching in dice_count. Since list indexing starts at 0, the damage_value must be decreased by 1.
 
             # Divider
             print("")
