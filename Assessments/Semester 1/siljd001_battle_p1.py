@@ -2,11 +2,11 @@
 # File: siljd001_battle_p1.py
 # Author: Jaylord Silverio
 # Email Id: siljd001@mymail.unisa.edu.au
-# Description: Game of Dragon Battleground - Part 1
+# Description: Assignment 1 - Game of Dragon Battleground - Part 1
 # This is my own work as defined by the University's Academic Misconduct policy.
 #
 
-import random
+import random  # Used for generating random integers
 import dice  # Import dice module to display the die face values to the screen
 
 
@@ -25,7 +25,7 @@ while play_dragon_battleground not in ["y", "n"]:
     play_dragon_battleground = input(
         "Would you like to play Dragon Battleground [y|n] ? "
     )
-# num_battles = input("Please enter number of battle rounds: ")
+
 while play_dragon_battleground == "y":
 
     # Player and Dragon's Health
@@ -85,7 +85,9 @@ while play_dragon_battleground == "y":
                 damage_value = random.randint(1, 6)
                 total_damage += damage_value
                 player_roll.append(damage_value)
-                dice_count[damage_value - 1] += 1 # Adds 1 to the index matching in dice_count. Since list indexing starts at 0, the damage_value must be decreased by 1.
+                dice_count[
+                    damage_value - 1
+                ] += 1  # Adds 1 to the index matching in dice_count. Since list indexing starts at 0, the damage_value must be decreased by 1.
 
             # Divider
             print("")

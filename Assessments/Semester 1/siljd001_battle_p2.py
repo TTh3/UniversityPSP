@@ -2,7 +2,7 @@
 # File: siljd001_battle_p2.py
 # Author: Jaylord Silverio
 # Email Id: siljd001@mymail.unisa.edu.au
-# Description: Game of Dragon Battleground - Part 2
+# Description: Assignment 1 - Game of Dragon Battleground - Part 2
 # This is my own work as defined by the University's Academic Misconduct policy.
 #
 
@@ -27,9 +27,10 @@ die = roll_die()
 
 
 def roll_damage(max_dice):
-    random_list = []
-    for _ in range(max_dice):
-        random_list.append(roll_die())
+    player_roll = []
+    for damage_count in range(max_dice):
+        player_roll.append(roll_die()) # Append each rolled die value to player_roll list
+    return player_roll
 
 
 def calculate_damage(hand):
@@ -39,7 +40,8 @@ def calculate_damage(hand):
     for val in hand:
         total_damage += val
         dice_count[val - 1] += 1
-    print(dice_count)
+
+    # Using sets to manipulate list of dices getting rid of duplications
     dice_count_no_duplication = list(set(hand))
 
     # Standard Roll (All 5 different values)
@@ -83,6 +85,3 @@ def calculate_damage(hand):
         current_damage = total_damage
 
     return current_damage
-
-
-print(calculate_damage([5, 1, 3, 2, 2]))
