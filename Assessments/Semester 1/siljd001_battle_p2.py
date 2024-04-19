@@ -11,12 +11,12 @@ import random  # Used for generating random integers
 
 # Display Details
 def display_details():
-    print("File: siljd001_battle_p2.py")
-    print("Author: Jaylord Silverio")
-    print("Stud ID: 110445405")
-    print("Email Id: siljd001@mymail.unisa.edu.au")
-    print("File: siljd001_battle_p2.py")
-
+    print("File     : siljd001_battle_p2.py")
+    print("Author   : Jaylord Silverio")
+    print("Stud ID  : 110445405")
+    print("Email ID : siljd001@mymail.unisa.edu.au")
+    print("This is my own work as defined by the")
+    print("University's Academic Misconduct Policy.")
 
 def roll_die():
     random_generator = random.randint(1, 6)
