@@ -60,7 +60,11 @@ def read_file(filename):
 
 # Function display_players() - place your own comments here...  : )
 def display_players(player_list):
-
+    # Provides the spacing required for each text
+    def text_spacing (total_space, text):
+        return " "*(total_space-len(f'{text}'))+f"{text}"
+    
+        
     # This line will eventually be removed - used for development purposes only.
     print("In function display_players()")
 
@@ -72,9 +76,9 @@ def display_players(player_list):
     print("-----------------------------------------------------------")
     for player in player_list:
         print(
-            f"-  {player[0]}                {player[1]}  {player[2]}  {player[3]}  {player[4]}  {player[5]}    {player[6]}    -"
+            f"-  {player[0]+" "*(26-len(player[0]))}{text_spacing (2,player[1])} {text_spacing (2,player[2])} {text_spacing (2,player[3])} {text_spacing (2,player[4])}{text_spacing (7,player[5])}{text_spacing(9,player[6])} -"
         )
-        print("-----------------------------------------------------------")
+        print("----------------------------------------------------------")
 
     print("===========================================================")
 
