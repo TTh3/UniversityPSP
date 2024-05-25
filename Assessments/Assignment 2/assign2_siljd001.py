@@ -57,7 +57,14 @@ def read_file(filename):
 
     return player_list
 
-
+# Function display_details()
+def display_details():
+    print("File     : assign2_siljd001.py")
+    print("Author   : Jaylord Silverio")
+    print("Stud ID  : 110445405")
+    print("Email ID : siljd001")
+    print("This is my own work as defined by the University's Academic Misconduct Policy.")
+    
 # Function display_players() - place your own comments here...  : )
 def display_players(player_list):
     # Provides the spacing required for each text
@@ -99,11 +106,24 @@ player_list = read_file("players.txt")
 
 ### you will remove some of the following code as it's been included for development purposes only...  : )
 
+# Displaying details
+display_details()
+
 # Display player list to the screen to ensure read_file is working correctly
-# for player in player_list:
-#     print(player)
 display_players(player_list)
 
+# User Choice
+USER_CHOICES = ["list", "buy", "search", "high", "add", "remove", "play", "chips", "quit"]
+print("Please enter choice")
+user_choice = input(f'{USER_CHOICES} :  ')
+
+while user_choice not in USER_CHOICES:
+    print("\n Not a valid command - please try again.", end="\n\n\n")
+    print("Please enter choice")
+    user_choice = input(f'{USER_CHOICES} :  ')
+
+
+    
 
 no_chips = 100
 game_result = 0
