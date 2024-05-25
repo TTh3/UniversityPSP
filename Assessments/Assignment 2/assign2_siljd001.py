@@ -66,6 +66,7 @@ def display_details():
     print("This is my own work as defined by the University's Academic Misconduct Policy.")
     
 # Function display_players() - place your own comments here...  : )
+# list
 def display_players(player_list):
     # Provides the spacing required for each text
     def text_spacing (total_space, text):
@@ -92,6 +93,33 @@ def display_players(player_list):
 
 ### Place the rest of your function definitions here...  : )
 
+# Finds player inside list of players, returns the index if found.
+#  command
+def find_player(player_list, name):
+    return -1
+  
+# add 
+def add_player(player_list,name):
+    new_players=[]
+    # Calls find_player to search for its location
+    find_player(new_players,name)
+    return new_players
+# remove
+def remove_player(player_list, name):
+    return
+# high
+def display_highest_chip_holder(player_list):
+    return
+# buy
+def buy_player_chips(player_list,name):
+    return
+
+# play
+def play_blackjack_games(player_list, player_pos):
+    return
+# chips
+def sort_by_chips(player_list):
+    return
 
 ### Define list to store player information
 player_list = []
@@ -122,7 +150,16 @@ while user_choice not in USER_CHOICES:
     print("Please enter choice")
     user_choice = input(f'{USER_CHOICES} :  ')
 
-
+play = "y"
+while play == "y":
+    if user_choice == USER_CHOICES[0]:
+        print()
+        display_players(player_list)
+        play = "quit"
+    elif user_choice == USER_CHOICES[8]:
+        print("\n Thanks for playing G!")
+        play = "quit"
+        
     
 
 no_chips = 100
