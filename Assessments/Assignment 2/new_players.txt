@@ -1,0 +1,10 @@
+Bruce Wayne
+5 5 0 0 100 15
+Jessica Jones
+12 0 6 6 10 6
+Johnny Rose
+6 2 0 4 20 10
+Gina Linetti
+7 4 0 3 300 15
+Buster Bluth
+3 0 2 1 50 1
