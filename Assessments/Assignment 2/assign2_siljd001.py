@@ -88,9 +88,9 @@ def display_players(player_list):
     print("-----------------------------------------------------------")
     for player in player_list:
         print(
-            f"-  {player[0]+" "*(26-len(player[0]))}{text_spacing (2,player[1])} {text_spacing (2,player[2])} {text_spacing (2,player[3])} {text_spacing (2,player[4])}{text_spacing (7,player[5])}{text_spacing(9,player[6])} -"
+            f"-  {player[0]+" "*(26-len(player[0]))}{text_spacing (2,player[1])} {text_spacing (2,player[2])} {text_spacing (2,player[3])} {text_spacing (2,player[4])}{text_spacing (8,player[5])}{text_spacing(8,player[6])}  -"
         )
-        print("----------------------------------------------------------")
+        print("-----------------------------------------------------------")
 
     print("===========================================================")
     print() # Space for bottom
@@ -114,10 +114,14 @@ def add_player(player_list,name): # add
     return new_players
 # remove
 def remove_player(player_list, name): # remove
-    player_index = find_player(player_list, name)
-    player_list.remove(player_list[player_index])
+    new_player_list = []
+    player_index = find_player(player_list, name) # 3
+    for player in range(len(player_list)):
+        if player != player_index: # 3
+            new_player_list.append(player_list[player])
+    print(new_player_list)
+    return new_player_list
 
-    return player_list
 # high
 def display_highest_chip_holder(player_list): # high
     highest_chips = int(player_list[0][5]) 
@@ -156,6 +160,7 @@ def play_blackjack_games(player_list, player_pos): # play
         # Display to the screen the result of play_one_game() – game result (value of 3, 1 or 0)
         # and number of chips remaining.
         # print(type( game_result), no_chips, "\n")
+        player_list[player_pos][5] = no_chips
         player[1] = int(player[1]) +1
         if game_result==3:
             player[2] = int(player[1]) + 1
@@ -169,6 +174,7 @@ def play_blackjack_games(player_list, player_pos): # play
 # chips
 def sort_by_chips(player_list): # chips
     copied_list = player_list + []
+    
     sorted_list = []
     while copied_list:
         maximum = copied_list[0]
@@ -176,7 +182,8 @@ def sort_by_chips(player_list): # chips
             if int(x[5]) > int(maximum[5]):
                 maximum = x
         sorted_list.append(maximum)
-        copied_list.remove(maximum)    
+        copied_list = [i for i in copied_list if i != maximum]
+    
     return sorted_list
 
 ### Define list to store player information
@@ -187,7 +194,7 @@ player_list = []
 
 
 # Read player information from file and store in player_list
-player_list = read_file("players.txt")
+player_list = read_file("new_players.txt")
 
 
 ### you will remove some of the following code as it's been included for development purposes only...  : )
