@@ -72,8 +72,7 @@ def display_details():
     print("Email ID : siljd001")
     print("This is my own work as defined by the University's Academic Misconduct Policy. \n\n")
     
-# Function display_players() - place your own comments here...  : )
-# list
+# Function display_players(player_list) - place your own comments here...  : )
 def display_players(player_list):
     # Provides the spacing required for each text
     def text_spacing (total_space, text):
@@ -131,7 +130,7 @@ def display_highest_chip_holder(player_list): # high
         if chips > highest_chips:
             highest_chips = chips
             highest_player_index = player
-    print(f"Highest Chip Holder => {player_list[highest_player_index][0]} with {highest_chips} chips!\n")
+    print(f"\nHighest Chip Holder => {player_list[highest_player_index][0]} with {highest_chips} chips!\n")
     return highest_chips
 # buy
 def buy_player_chips(player_list, name): # buy
@@ -174,27 +173,27 @@ def play_blackjack_games(player_list, player_pos): # play
 # chips
 def sort_by_chips(player_list): # chips
     copied_list = player_list + []
-    
     sorted_list = []
     while copied_list:
+        removed_list= []
         maximum = copied_list[0]
         for x in copied_list: 
             if int(x[5]) > int(maximum[5]):
                 maximum = x
         sorted_list.append(maximum)
-        copied_list = [i for i in copied_list if i != maximum]
-    
+        # i for i in copied_list if i != maximum]
+        for copy_player in copied_list:
+            if copy_player != maximum:
+                removed_list.append(copy_player)
+        copied_list = removed_list
     return sorted_list
 
 ### Define list to store player information
 player_list = []
 
 
-### Place your code here... : )
-
-
 # Read player information from file and store in player_list
-player_list = read_file("new_players.txt")
+player_list = read_file("players.txt")
 
 
 ### you will remove some of the following code as it's been included for development purposes only...  : )
@@ -243,8 +242,8 @@ while play == "y":
         else:
             print(f"\n{name_prompt} stats:\n")
             print("P  W  L  D  Score")
-            print(f"{player_list[player_index][1]}  {player_list[player_index][2]}  {player_list[player_index][3]}  {player_list[player_index][4]}  {player_list[player_index][6]}")
-            print("\n")
+            print(f"{player_list[player_index][1]}  {player_list[player_index][2]}  {player_list[player_index][3]}  {player_list[player_index][4]}  {player_list[player_index][6]}\n")
+            print(f"Chips: {player_list[player_index][5]}\n\n")
     elif user_choice == "high":
         display_highest_chip_holder(player_list)
     elif user_choice == "add":
@@ -278,6 +277,8 @@ while play == "y":
         
 print("\n\n-- Program terminating --\n\n")
 print("NOTE: Your program should output the following information to a file - new_players.txt.\n")
+
+# Write to file once program is terminated
 write_to_file("new_players.txt", player_list)
 
 # Printing output new_players.txt
