@@ -1,14 +1,10 @@
-Gina Linetti
-7 4 0 3 300 15
-Riday Bhattarai
-1 2 0 0 200 0
 Bruce Wayne
 5 5 0 0 100 15
-Buster Bluth
-3 0 2 1 50 1
-Johnny Rose
-6 2 0 4 20 10
 Jessica Jones
 12 0 6 6 10 6
-Aidan Smith
-4 4 3 0 0 0
+Johnny Rose
+6 2 0 4 20 10
+Gina Linetti
+7 4 0 3 300 15
+Buster Bluth
+3 0 2 1 50 1

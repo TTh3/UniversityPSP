@@ -9,14 +9,8 @@
 # Place your own comments in this file also.
 #
 
-
+# Importing the game blackjack
 import blackjack
-
-# FIXME: DELETE below before submission!
-import sys
-
-sys.dont_write_bytecode = True
-
 
 # Function read_file() - place your own comments here...  : )
 def read_file(filename):
@@ -62,6 +56,7 @@ def read_file(filename):
 def write_to_file(filename, player_list):
     outfile = open(filename, 'w')
     for player in player_list:
+        # Writing the players inside a new file
         outfile.write(player[0]+"\n"+f'{player[1]} {player[2]} {player[3]} {player[4]} {player[5]} {player[6]}\n') 
     outfile.close()
 # Function display_details()
@@ -79,7 +74,6 @@ def display_players(player_list):
         return " "*(total_space-len(f'{text}'))+f"{text}"
     
     print() # Space for top
-    # Place your code here
     print("===========================================================")
     print("-                     Player Summary                      -")
     print("===========================================================")
@@ -96,8 +90,7 @@ def display_players(player_list):
 
 ### Place the rest of your function definitions here...  : )
 
-# Finds player inside list of players, returns the index if found.
-#  command
+# Finds player inside list of players, returns the index if found. If index is not found, returns -1
 def find_player(player_list, name): # search
     for player_index in range(len(player_list)):
         if player_list[player_index][0] == name:
@@ -175,13 +168,15 @@ def sort_by_chips(player_list): # chips
     copied_list = player_list + []
     sorted_list = []
     while copied_list:
-        removed_list= []
+        removed_list = []
         maximum = copied_list[0]
+        # Using the maximum value, the chips values are compared and placed on the left or right side of the maximum value inside the list.
         for x in copied_list: 
             if int(x[5]) > int(maximum[5]):
                 maximum = x
         sorted_list.append(maximum)
-        # i for i in copied_list if i != maximum]
+
+        # Python Remove Function Algorithm using a new list
         for copy_player in copied_list:
             if copy_player != maximum:
                 removed_list.append(copy_player)
@@ -196,13 +191,8 @@ player_list = []
 player_list = read_file("players.txt")
 
 
-### you will remove some of the following code as it's been included for development purposes only...  : )
-
-# Displaying details
+# Displaying student details
 display_details()
-
-# # Display player list to the screen to ensure read_file is working correctly
-# display_players(player_list)
 
 # User Choice
 USER_CHOICES = ["list", "buy", "search", "high", "add", "remove", "play", "chips", "quit"]
@@ -249,6 +239,7 @@ while play == "y":
     elif user_choice == "add":
         name_prompt = input("Please enter name: ")
         player_index = find_player(player_list, name_prompt)
+        # If player already exists inside player_list don't add player
         if player_index != -1:
             print(f"\n{name_prompt} already exists in player list \n\n")
         else:
@@ -269,13 +260,14 @@ while play == "y":
         else:
             play_blackjack_games(player_list,player_index)
     elif user_choice == "chips":
+        # Sorts the chips from the highest to the lowest (top to bottom)
         player_list = sort_by_chips(player_list)
         display_players(player_list)
         
     elif user_choice == "quit":
         play = "quit"
         
-print("\n\n-- Program terminating --\n\n")
+print("\n-- Program terminating --\n")
 print("NOTE: Your program should output the following information to a file - new_players.txt.\n")
 
 # Write to file once program is terminated
