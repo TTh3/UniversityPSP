@@ -1,12 +1,10 @@
 #
-#  PSP Assignment 2, SP2 2024 - Provided file (assign2_yourEmailId.py).
-#  Remove this and place appropriate file comments here.
-#
-#  Modify this file to include your code solution.
-#
-#
-# Write your code and function definitions in this file.
-# Place your own comments in this file also.
+# File: assign2_siljd001.py
+# Author: Jaylord Silverio
+# Email Id: siljd001@mymail.unisa.edu.au
+# Description: PSP Assignment 2, SP2 2024
+# This is my own work as defined by the University's
+# Academic Misconduct policy.
 #
 
 # Importing the game blackjack
